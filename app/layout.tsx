@@ -25,7 +25,10 @@ export const metadata: Metadata = {
     description: "Trusted by startups and enterprises to design, build, and scale products that perform globally.",
     type: "website",
   },
-    generator: 'v0.app'
+  icons: {
+    icon: "/image.png",
+  },
+  generator: 'v0.app'
 }
 
 export const viewport: Viewport = {

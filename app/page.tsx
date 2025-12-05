@@ -6,6 +6,7 @@ import { ServicesSection } from "@/components/services-section"
 import { CTASection } from "@/components/cta-section"
 import { SiteFooter } from "@/components/site-footer"
 import { FloatingNav } from "@/components/floating-nav"
+import { WhyChooseUs } from "@/components/why-choose-us"
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <ProjectShowcase />
       <LogoCarousel />
       <ServicesSection />
+      <WhyChooseUs />
       <CTASection />
       <SiteFooter />
       <FloatingNav />

@@ -5,7 +5,8 @@ import { ArrowRight, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
-import { ProjectCard } from "./project-card" // Ensure ProjectCard is imported
+import { ProjectCard } from "./project-card"
+import { DotPattern } from "./dot-pattern"
 
 const testimonials = [
   {
@@ -31,16 +32,20 @@ export function HeroSection() {
 
   return (
     <section className="relative overflow-hidden bg-[#f8fafc]">
-      {/* Dotted background pattern - only for hero area */}
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: `radial-gradient(circle, #d1d5db 1px, transparent 1px)`,
-          backgroundSize: "24px 24px",
-        }}
-      />
-
       <div className="relative mx-auto max-w-[1400px] px-4 md:px-8 pt-12 md:pt-20 pb-24">
+        {/* Dotted background pattern - only for hero area */}
+        <div className="absolute inset-x-0 top-0" style={{ height: "calc(100% - 420px)", paddingLeft: "90px", paddingRight: "90px" }}>
+          <div className="relative w-full h-full">
+            <DotPattern width={15} height={15} cx={1} cy={1} cr={1} className="text-neutral-400/30" />
+            <div 
+              className="absolute inset-0" 
+              style={{ 
+                background: "linear-gradient(to right, rgba(248, 250, 252, 1) 0%, rgba(248, 250, 252, 0) 15%, rgba(248, 250, 252, 0) 85%, rgba(248, 250, 252, 1) 100%), linear-gradient(to top, rgba(248, 250, 252, 1) 0%, rgba(248, 250, 252, 0) 30%)",
+                pointerEvents: "none"
+              }} 
+            />
+          </div>
+        </div>
         {/* Main Content Container with Side Testimonials */}
         <div className="relative">
           {/* Left Testimonial */}
@@ -107,12 +112,12 @@ export function HeroSection() {
             {/* Headline */}
             <h1
               className={cn(
-                "text-[2.5rem] md:text-[3.25rem] lg:text-[3.75rem] font-bold text-foreground leading-[1.15] tracking-tight transition-all duration-700 ease-out",
+                "text-[2.5rem] md:text-[2.25rem] lg:text-[2.75rem] font-bold text-foreground leading-[1.15] tracking-tight transition-all duration-700 ease-out",
                 isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
               )}
               style={{ transitionDelay: "100ms" }}
             >
-              <span className="inline-flex items-center gap-3 flex-wrap justify-center">
+              <span className="inline-flex items-center gap-4 flex-wrap justify-center">
                 World-class Tech Partner
                 {/* Vercel triangle icon */}
                 <svg className="w-7 h-7 md:w-9 md:h-9 inline-block" viewBox="0 0 76 65" fill="none">
@@ -147,7 +152,7 @@ export function HeroSection() {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <span className="text-primary">Success</span>
+                <span className="text-foreground">Success</span>
               </span>
             </h1>
 
