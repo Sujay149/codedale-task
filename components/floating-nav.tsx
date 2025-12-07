@@ -7,10 +7,10 @@ import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 const navItems = [
-  { label: "Services", href: "#services" },
-  { label: "Our Work", href: "#our-works" },
-  { label: "Achievements", href: "#achievements" },
-  { label: "FAQs", href: "#faqs" },
+  { label: "Services", href: "/#services" },
+  { label: "Our Work", href: "/#our-works" },
+  { label: "Achievements", href: "/#achievements" },
+  { label: "FAQs", href: "/#faqs" },
   { label: "Contact", href: "/contact" },
 ]
 
