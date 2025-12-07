@@ -75,17 +75,15 @@ export function ProjectShowcase() {
     if (!el) return;
 
     const interval = setInterval(() => {
-      const cardWidth = 486; // card width (480px) + gap (6px)
+      const cardWidth = 486; // card width + gap
       const maxScroll = el.scrollWidth - el.clientWidth;
-      
+
       if (el.scrollLeft >= maxScroll - 10) {
-        // Loop back to start
         el.scrollTo({ left: 0, behavior: "smooth" });
       } else {
-        // Scroll to next card
         el.scrollBy({ left: cardWidth, behavior: "smooth" });
       }
-    }, 5000); // 5 seconds
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
@@ -103,64 +101,45 @@ export function ProjectShowcase() {
           {[...projects, ...projects, ...projects].map((p, index) => (
             <div
               key={`${p.id}-${index}`}
-              className="flex-shrink-0 w-[480px] bg-[#f8fafc] border-2 border-white rounded-[32px] overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.08)] snap-start"
+              className="flex-shrink-0 w-[480px] bg-[#f8fafc] border-2 border-white rounded-[32px] overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.08)] snap-start transition-all duration-500 ease-out hover:-translate-y-3 hover:scale-[1.03] hover:shadow-[0_16px_50px_rgba(0,0,0,0.15)]"
             >
-              {/* ---------------- TOP IMAGE WITH ROUNDED SHAPE ---------------- */}
+              {/* ---------------- TOP IMAGE SECTION ---------------- */}
               <div className="relative h-[280px] w-full p-4">
                 <div className="relative w-full h-full rounded-[24px] overflow-hidden">
-                  <Image
-                    src={p.image}
-                    alt=""
-                    fill
-                    className="object-cover"
-                  />
-                  
-                  {/* Small corner badge */}
+                  <Image src={p.image} alt="" fill className="object-cover" />
+
+                  {/* Corner badge */}
                   <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-md border border-white/30 px-3 py-1.5 rounded-full text-white text-xs font-semibold">
                     {p.companyHighlight}
                   </div>
                 </div>
               </div>
 
-              {/* ---------------- CHAT-LIKE CONTENT ---------------- */}
+              {/* ---------------- TEXT CONTENT ---------------- */}
               <div className="px-6 pb-6">
 
-                {/* Client testimonial - chat bubble style */}
+                {/* Testimonial bubble */}
                 <div className="bg-gray-100 rounded-[20px] rounded-tl-[4px] px-5 py-4 text-[16px] leading-[1.55] text-gray-900 mb-6">
                   {p.testimonial}
-                  {/* Client name inside bubble */}
-                  <p className="text-[13px] text-gray-500 mt-3 mb-0">
-                    {p.clientName}
-                  </p>
+                  <p className="text-[13px] text-gray-500 mt-3 mb-0">{p.clientName}</p>
                 </div>
 
-                {/* Response bubble - right aligned */}
+                {/* Response bubble */}
                 <div className="flex justify-end mb-6">
                   <div className="bg-gray-800 text-white rounded-[20px] rounded-tr-[4px] px-5 py-4 text-[15px] max-w-[85%]">
                     {p.response}
-                    {/* CodeDale label inside response bubble */}
-                    <p className="text-[13px] text-gray-400 text-right mt-3 mb-0">
-                      CodeDale
-                    </p>
+                    <p className="text-[13px] text-gray-400 text-right mt-3 mb-0">CodeDale</p>
                   </div>
                 </div>
 
-                {/* Footer with avatar */}
+                {/* Footer */}
                 <div className="flex items-center gap-3 pt-4 border-t border-gray-200/50">
                   <div className="w-[44px] h-[44px] rounded-full overflow-hidden border-2 border-gray-100">
-                    <Image
-                      src={p.avatar}
-                      alt={p.fullName}
-                      width={44}
-                      height={44}
-                      className="object-cover"
-                    />
+                    <Image src={p.avatar} alt={p.fullName} width={44} height={44} className="object-cover" />
                   </div>
 
                   <div>
-                    <p className="text-[15px] font-semibold text-gray-900">
-                      {p.fullName}
-                    </p>
+                    <p className="text-[15px] font-semibold text-gray-900">{p.fullName}</p>
                     <p className="text-[13px] text-gray-600">
                       {p.title} <span className="text-blue-600 font-medium">{p.companyHighlight}</span>
                     </p>
@@ -173,7 +152,7 @@ export function ProjectShowcase() {
         </div>
       </div>
 
-      {/* HIDE SCROLLBAR */}
+      {/* Hide scrollbar */}
       <style jsx global>{`
         .scrollbar-hide::-webkit-scrollbar {
           display: none;
