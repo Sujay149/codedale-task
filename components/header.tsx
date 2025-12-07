@@ -20,20 +20,7 @@ export function Header() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 w-full bg-[#f8fafc]">
-        {/* Dot pattern background */}
-        <div className="absolute inset-0 overflow-hidden" style={{ paddingLeft: "90px", paddingRight: "90px" }}>
-          <div className="relative w-full h-full">
-            <DotPattern width={15} height={15} cx={1} cy={1} cr={1} className="text-neutral-400/30" />
-            <div
-              className="absolute inset-0"
-              style={{
-                background: "linear-gradient(to right, rgba(248, 250, 252, 1) 0%, rgba(248, 250, 252, 0) 15%, rgba(248, 250, 252, 0) 85%, rgba(248, 250, 252, 1) 100%), linear-gradient(to top, rgba(248, 250, 252, 1) 0%, rgba(248, 250, 252, 0) 30%)",
-                pointerEvents: "none"
-              }}
-            />
-          </div>
-        </div>
+      <header className="fixed top-0 left-0 right-0 z-50 w-full">
         <div className="relative mx-auto max-w-[1400px] px-4 md:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}

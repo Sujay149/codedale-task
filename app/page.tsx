@@ -3,11 +3,13 @@ import { HeroSection } from "@/components/hero-section"
 import { ProjectShowcase } from "@/components/project-showcase"
 import { LogoCarousel } from "@/components/logo-carousel"
 import { ChallengesSection } from "@/components/challenges-section"
-// import { ServicesSection } from "@/components/services-section"
 import { CTASection } from "@/components/cta-section"
 import { SiteFooter } from "@/components/site-footer"
 import { FloatingNav } from "@/components/floating-nav"
 import { WhyChooseUs } from "@/components/why-choose-us"
+import { HowToGetStarted } from "@/components/how-to-get-started"
+import ServicesComponentMinimal from "@/components/services"
+import { OurWorks } from "@/components/our-works"
 
 export default function Home() {
   return (
@@ -25,8 +27,10 @@ export default function Home() {
       <ProjectShowcase />
       <LogoCarousel />
       <ChallengesSection />
-      {/* <ServicesSection /> */}
       <WhyChooseUs />
+      <HowToGetStarted />
+      <ServicesComponentMinimal />
+      <OurWorks />
       <CTASection />
       <SiteFooter />
     </main>

@@ -1,44 +1,37 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import Image from "next/image"
 import { cn } from "@/lib/utils"
-import {
-    ImpactIcon,
-    DeliveryIcon,
-    PricingIcon,
-    ExpertIcon,
-    CollaborationIcon,
-    TalentIcon
-} from "@/components/custom-icons"
 
 const features = [
     {
-        icon: ImpactIcon,
+        icon: "/choose/globe.png",
         title: "Impact-Driven Solutions",
         description: "Every product we build is custom-crafted to create real business impact.",
     },
     {
-        icon: DeliveryIcon,
+        icon: "/choose/delivery.png",
         title: "Fast & Reliable Delivery",
         description: "Get high-quality results in days or weeks, not months.",
     },
     {
-        icon: PricingIcon,
+        icon: "/choose/pricing.png",
         title: "Transparent & Fair Pricing",
         description: "Honest, customized pricing with no hidden fees or surprises.",
     },
     {
-        icon: ExpertIcon,
+        icon: "/choose/solve.png",
         title: "Expert Problem Solvers",
         description: "We tackle technical and creative challenges with innovative solutions.",
     },
     {
-        icon: CollaborationIcon,
+        icon: "/choose/collab.png",
         title: "Seamless Collaboration",
         description: "Clear communication and feedback at every stage of the project.",
     },
     {
-        icon: TalentIcon,
+        icon: "/choose/talent.png",
         title: "Direct Access to Top Talent",
         description: "Work directly with senior experts—no long-term hiring needed.",
     },
@@ -109,8 +102,6 @@ function FeatureCard({
     isVisible: boolean
     delay: number
 }) {
-    const Icon = feature.icon
-
     return (
         <div
             className={cn(
@@ -120,10 +111,14 @@ function FeatureCard({
             style={{ transitionDelay: `${delay}ms` }}
         >
             <div className="mb-4 relative">
-                {/* Icons from the custom set are SVGs with 1080x1080 viewBox. 
-              We need to size them appropriately. */}
-                <div className="w-24 h-24 flex items-center justify-center">
-                    <Icon className="w-full h-full" />
+                <div className="w-32 h-32 flex items-center justify-center">
+                    <Image 
+                        src={feature.icon} 
+                        alt={feature.title}
+                        width={128}
+                        height={128}
+                        className="w-full h-full object-contain"
+                    />
                 </div>
             </div>
 
