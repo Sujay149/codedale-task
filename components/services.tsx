@@ -69,13 +69,13 @@ const ServicesComponentMinimal = () => {
       {/* Top dashed border */}
       <div className="absolute top-0 left-0 w-full border-t border-dashed border-slate-300" />
       
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-3xl mx-auto px-6">
         
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-3">
           <h2 
             className={cn(
-              "text-4xl md:text-5xl font-bold mb-6 leading-tight text-slate-900 transition-all duration-700 ease-out",
+              "text-2xl md:text-3xl font-bold mb-6 leading-tight text-slate-900 transition-all duration-700 ease-out",
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             )}
           >
@@ -97,7 +97,7 @@ const ServicesComponentMinimal = () => {
         <div className="mb-16 border-t border-dashed border-slate-300" />
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-46 gap-y-2">
           {services.map((service, index) => (
             <div
               key={index}
@@ -108,7 +108,7 @@ const ServicesComponentMinimal = () => {
               style={{ transitionDelay: `${200 + index * 100}ms` }}
             >
               {/* Image Container */}
-              <div className="mb-6 w-48 h-32 relative flex items-center justify-center">
+              <div className="mb-0 w-28 h-32 relative flex items-center justify-center">
                 <Image
                   src={service.image}
                   alt={service.name}
@@ -119,9 +119,9 @@ const ServicesComponentMinimal = () => {
               </div>
               
               {/* Service Name */}
-              <h3 className="text-xl md:text-2xl font-semibold text-slate-900">
+              <h6 className="text-l md:text-l font-semibold text-slate-900 whitespace-nowrap">
                 {service.name}
-              </h3>
+              </h6>
             </div>
           ))}
         </div>

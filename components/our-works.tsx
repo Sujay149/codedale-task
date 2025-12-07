@@ -18,7 +18,7 @@ const projects = [
         title: "Apple Store Clone",
         image: "/works/project2.png",
         bgColor: "bg-gradient-to-br from-blue-400 to-blue-600",
-        logo: null,
+        logo: "/works/logo2.png",
     },
     {
         id: 3,
@@ -32,7 +32,7 @@ const projects = [
         title: "Dashboard Analytics",
         image: "/works/project4.png",
         bgColor: "bg-gradient-to-br from-emerald-400 to-emerald-600",
-        logo: null,
+        logo: "/works/logo4.png",
     },
 ]
 
@@ -60,7 +60,7 @@ export function OurWorks() {
 
     return (
         <section id="our-works" ref={sectionRef} className="py-20 bg-[#f0f0f0] relative overflow-hidden">
-            <div className="mx-auto max-w-7xl px-6">
+            <div className="mx-auto max-w-7xl px-40">
                 
                 {/* Header */}
                 <div className="text-center max-w-3xl mx-auto mb-16">
@@ -83,7 +83,7 @@ export function OurWorks() {
                 </div>
 
                 {/* Projects Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 place-items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-9 place-items-center" style={{ columnGap: '-40px' }}>
                     {projects.map((project, index) => (
                         <div
                             key={project.id}
@@ -101,15 +101,13 @@ export function OurWorks() {
                         >
                             
                             {/* Project Image */}
-                            <div className="relative w-full h-full p-8 flex items-center justify-center">
-                                <div className="relative w-full h-full">
-                                    <Image
-                                        src={project.image}
-                                        alt={project.title}
-                                        fill
-                                        className="object-contain"
-                                    />
-                                </div>
+                            <div className="relative w-full h-full">
+                                <Image
+                                    src={project.image}
+                                    alt={project.title}
+                                    fill
+                                    className="object-cover"
+                                />
                             </div>
 
                             {/* Bottom Info Bar */}

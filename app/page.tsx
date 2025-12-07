@@ -10,6 +10,7 @@ import { WhyChooseUs } from "@/components/why-choose-us"
 import { HowToGetStarted } from "@/components/how-to-get-started"
 import ServicesComponentMinimal from "@/components/services"
 import { OurWorks } from "@/components/our-works"
+import { Achievements } from "@/components/achievements"
 
 export default function Home() {
   return (
@@ -31,6 +32,7 @@ export default function Home() {
       <HowToGetStarted />
       <ServicesComponentMinimal />
       <OurWorks />
+      <Achievements />
       <CTASection />
       <SiteFooter />
     </main>
