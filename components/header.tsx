@@ -12,7 +12,7 @@ const navItems = [
   { label: "Our Work", href: "#our-works" },
   { label: "Achievements", href: "#achievements" },
   { label: "FAQs", href: "#faqs" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "/contact" },
 ]
 
 export function Header() {
