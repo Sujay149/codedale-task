@@ -75,7 +75,7 @@ export function ProjectShowcase() {
     if (!el) return;
 
     const interval = setInterval(() => {
-      const cardWidth = 486; // card width + gap
+      const cardWidth = 446; // card width + gap
       const maxScroll = el.scrollWidth - el.clientWidth;
 
       if (el.scrollLeft >= maxScroll - 10) {
@@ -89,8 +89,8 @@ export function ProjectShowcase() {
   }, []);
 
   return (
-    <section className="py-20 bg-transparent -mt-[40px]">
-      <div className="max-w-[1600px] mx-auto px-6">
+    <section className="py-10 bg-white -mt-[40px]">
+      <div className="max-w-[1600px] mx-auto px-6 ">
 
         {/* Horizontal Auto Scrolling Container */}
         <div
@@ -101,7 +101,7 @@ export function ProjectShowcase() {
           {[...projects, ...projects, ...projects].map((p, index) => (
             <div
               key={`${p.id}-${index}`}
-              className="flex-shrink-0 w-[480px] bg-[#f8fafc] border-2 border-white rounded-[32px] overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.08)] snap-start transition-all duration-500 ease-out hover:-translate-y-3 hover:scale-[1.03] hover:shadow-[0_16px_50px_rgba(0,0,0,0.15)]"
+              className="flex-shrink-0 w-[403px] bg-[#f8fafc] border-2 border-white rounded-[32px] overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.08)] snap-start transition-all duration-500 ease-out hover:-translate-y-3 hover:scale-[1.03] hover:shadow-[0_16px_50px_rgba(0,0,0,0.15)]"
             >
               {/* ---------------- TOP IMAGE SECTION ---------------- */}
               <div className="relative h-[280px] w-full p-4">

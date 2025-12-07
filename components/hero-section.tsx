@@ -54,20 +54,20 @@ export function HeroSection() {
         {/* ======================= SIDE FLOATING TESTIMONIAL — LEFT ======================= */}
         <div
           className={cn(
-            "hidden xl:block absolute -left-4 top-32 transition-all duration-700 ease-out z-10",
+            "hidden xl:block absolute left-4 top-[258px] transition-all duration-700 ease-out z-10",
             isLoaded ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8",
           )}
           style={{ transitionDelay: "400ms" }}
         >
           {/* BACK LAYER TO MATCH IMAGE */}
-          <div className="absolute top-2 left-2 w-full h-full bg-gray-200 rounded-[32px] shadow-md"></div>
+          <div className="absolute top-2 left-2 w-full h-full bg-white-900 rounded-[32px] shadow-md" style={{ transform: "rotate(-10deg)" }}></div>
 
           {/* FRONT CARD */}
           <div
-            className="relative bg-white rounded-[32px] shadow-xl p-7 max-w-[300px] border border-gray-200"
-            style={{ transform: "rotate(-4deg)" }}
+            className="relative bg-white rounded-[32px] shadow-xl px-6 py-4 max-w-[300px] border border-gray-200"
+            style={{ transform: "rotate(-15deg)" }}
           >
-            <span className="absolute top-4 right-6 text-4xl text-gray-300 font-serif leading-none">”</span>
+            <span className="absolute top-4 right-6 text-4xl text-gray-300 font-serif leading-none">"</span>
 
             <p className="text-[15px] text-gray-700 leading-[1.6]">
               "{testimonials[0].quote}"
@@ -82,20 +82,20 @@ export function HeroSection() {
         {/* ======================= SIDE FLOATING TESTIMONIAL — RIGHT ======================= */}
         <div
           className={cn(
-            "hidden xl:block absolute -right-4 top-32 transition-all duration-700 ease-out z-10",
+            "hidden xl:block absolute right-4 top-[258px] transition-all duration-700 ease-out z-10",
             isLoaded ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8",
           )}
           style={{ transitionDelay: "500ms" }}
         >
           {/* BACK LAYER */}
-          <div className="absolute top-2 left-2 w-full h-full bg-gray-200 rounded-[32px] shadow-md"></div>
+          <div className="absolute top-2 left-2 w-full h-full bg-gray-200 rounded-[32px] shadow-md" style={{ transform: "rotate(20deg)" }}></div>
 
           {/* FRONT CARD */}
           <div
-            className="relative bg-white rounded-[32px] shadow-xl p-7 max-w-[300px] border border-gray-200"
-            style={{ transform: "rotate(4deg)" }}
+            className="relative bg-white rounded-[32px] shadow-xl px-6 py-4 max-w-[280px] border border-gray-200"
+            style={{ transform: "rotate(15deg)" }}
           >
-            <span className="absolute top-4 right-6 text-4xl text-gray-300 font-serif leading-none">”</span>
+            <span className="absolute top-4 right-6 text-4xl text-gray-300 font-serif leading-none">"</span>
 
             <p className="text-[15px] text-gray-700 leading-[1.6]">
               "{testimonials[1].quote}"
@@ -136,20 +136,27 @@ export function HeroSection() {
             >
               <span className="inline-flex items-center gap-4 flex-wrap justify-center">
                 World-class Tech Partner
-                <svg className="w-7 h-7 md:w-9 md:h-9 inline-block" viewBox="0 0 76 65" fill="none">
-                  <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" fill="#000000" />
-                </svg>
+          <Image
+  src="/hero-icons/figma.png"
+  alt="Figma Logo"
+  width={80}      // increase actual image width
+  height={80}     // increase actual image height
+  className="w-10 h-10 md:w-14 md:h-14 inline-block object-contain"
+/>
+
+
               </span>
               <br />
               <span className="inline-flex items-center gap-3 flex-wrap justify-center">
                 Engineering Your Digital
-                <svg className="w-7 h-7 md:w-9 md:h-9 inline-block" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M13 2L3 14H12L11 22L21 10H12L13 2Z"
-                    fill="#F97316"
-                    stroke="#F97316"
-                  />
-                </svg>
+               <Image
+  src="/hero-icons/supabase.png"
+  alt="Figma Logo"
+  width={36}     // matches w-9
+  height={36}    // matches h-9
+  className="w-7 h-7 md:w-9 md:h-9 inline-block object-contain"
+/>
+
                 Success
               </span>
             </h1>

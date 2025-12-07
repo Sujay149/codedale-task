@@ -2,7 +2,8 @@ import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
 import { ProjectShowcase } from "@/components/project-showcase"
 import { LogoCarousel } from "@/components/logo-carousel"
-import { ServicesSection } from "@/components/services-section"
+import { ChallengesSection } from "@/components/challenges-section"
+// import { ServicesSection } from "@/components/services-section"
 import { CTASection } from "@/components/cta-section"
 import { SiteFooter } from "@/components/site-footer"
 import { FloatingNav } from "@/components/floating-nav"
@@ -23,7 +24,8 @@ export default function Home() {
       </div>
       <ProjectShowcase />
       <LogoCarousel />
-      <ServicesSection />
+      <ChallengesSection />
+      {/* <ServicesSection /> */}
       <WhyChooseUs />
       <CTASection />
       <SiteFooter />

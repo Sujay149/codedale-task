@@ -37,7 +37,7 @@ export function FloatingNav() {
       <div className="flex items-center gap-4 px-3 py-2 bg-white rounded-full shadow-xl border border-border/50">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 pl-2">
-          <div className="w-7 h-7 rounded-lg bg-primary flex items-center justify-center">
+          <div className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center">
             <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4" />
             </svg>
@@ -63,8 +63,8 @@ export function FloatingNav() {
         {/* CTA Button */}
         <Button className="rounded-full bg-foreground text-background hover:bg-foreground/90 gap-2 px-4 py-2 text-sm font-medium">
           Book a Call
-          <span className="flex items-center justify-center w-5 h-5 rounded-full bg-background/20">
-            <ArrowUpRight className="w-3 h-3" />
+          <span className="flex items-center justify-center w-4 h-7 rounded-full bg-background/20">
+            <ArrowUpRight className="w-3 h-5" />
           </span>
         </Button>
       </div>
