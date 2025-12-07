@@ -59,8 +59,9 @@ export function OurWorks() {
     }, [])
 
     return (
-        <section ref={sectionRef} className="py-20 bg-[#f0f0f0] relative overflow-hidden">
+        <section id="our-works" ref={sectionRef} className="py-20 bg-[#f0f0f0] relative overflow-hidden">
             <div className="mx-auto max-w-7xl px-6">
+                
                 {/* Header */}
                 <div className="text-center max-w-3xl mx-auto mb-16">
                     <h2
@@ -82,22 +83,23 @@ export function OurWorks() {
                 </div>
 
                 {/* Projects Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 place-items-center">
                     {projects.map((project, index) => (
                         <div
                             key={project.id}
                             className={cn(
-                                "group relative rounded-3xl overflow-hidden transition-all duration-500 ease-out",
+                                "group relative rounded-[2.5rem] overflow-hidden transition-all duration-500 ease-out max-w-[430px] w-full mx-auto",
                                 project.bgColor,
                                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
                             )}
                             style={{ 
                                 transitionDelay: `${200 + index * 100}ms`,
-                                aspectRatio: "4/3"
+                                height: "500px"
                             }}
                             onMouseEnter={() => setHoveredCard(project.id)}
                             onMouseLeave={() => setHoveredCard(null)}
                         >
+                            
                             {/* Project Image */}
                             <div className="relative w-full h-full p-8 flex items-center justify-center">
                                 <div className="relative w-full h-full">
@@ -110,7 +112,7 @@ export function OurWorks() {
                                 </div>
                             </div>
 
-                            {/* Bottom Info Bar - Hidden by default, shown on hover */}
+                            {/* Bottom Info Bar */}
                             <div 
                                 className={cn(
                                     "absolute bottom-0 left-0 right-0 p-6 flex items-center justify-between transition-all duration-300",
@@ -120,7 +122,7 @@ export function OurWorks() {
                                 )}
                             >
                                 {/* Logo */}
-                                {project.logo && (
+                                {project.logo ? (
                                     <div className="bg-white/10 backdrop-blur-md rounded-2xl px-6 py-3 flex items-center gap-3">
                                         <div className="relative w-12 h-12">
                                             <Image
@@ -134,8 +136,7 @@ export function OurWorks() {
                                             {project.title}
                                         </span>
                                     </div>
-                                )}
-                                {!project.logo && (
+                                ) : (
                                     <div className="bg-white/10 backdrop-blur-md rounded-2xl px-6 py-3">
                                         <span className="text-white font-semibold text-lg">
                                             {project.title}
@@ -149,6 +150,7 @@ export function OurWorks() {
                                     <ArrowUpRight className="w-5 h-5" />
                                 </button>
                             </div>
+
                         </div>
                     ))}
                 </div>

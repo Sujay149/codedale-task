@@ -9,7 +9,7 @@ import { DotPattern } from "./dot-pattern"
 
 const navItems = [
   { label: "Services", href: "#services" },
-  { label: "Our Work", href: "#work" },
+  { label: "Our Work", href: "#our-works" },
   { label: "Achievements", href: "#achievements" },
   { label: "FAQs", href: "#faqs" },
   { label: "Contact", href: "#contact" },

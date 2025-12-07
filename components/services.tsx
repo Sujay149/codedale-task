@@ -65,7 +65,7 @@ const ServicesComponentMinimal = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-20 bg-[#f0f0f0] relative overflow-hidden">
+    <section id="services" ref={sectionRef} className="py-20 bg-[#f0f0f0] relative overflow-hidden">
       {/* Top dashed border */}
       <div className="absolute top-0 left-0 w-full border-t border-dashed border-slate-300" />
       
