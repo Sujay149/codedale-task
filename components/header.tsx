@@ -20,7 +20,7 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full">
+      <header className="fixed top-0 left-0 right-0 z-50 w-full bg-[#f8fafc]">
         {/* Dot pattern background */}
         <div className="absolute inset-0 overflow-hidden" style={{ paddingLeft: "90px", paddingRight: "90px" }}>
           <div className="relative w-full h-full">

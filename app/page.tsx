@@ -10,25 +10,23 @@ import { WhyChooseUs } from "@/components/why-choose-us"
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-[#f8fafc]">
+      <Header />
       <div
-        className="relative bg-[#f8fafc]"
+        className="relative bg-[#f8fafc] pt-20"
         style={{
           backgroundImage: `radial-gradient(circle, #d1d5db 1px, transparent 1px)`,
           backgroundSize: "24px 24px",
         }}
       >
-        <Header />
         <HeroSection />
       </div>
-
       <ProjectShowcase />
       <LogoCarousel />
       <ServicesSection />
       <WhyChooseUs />
       <CTASection />
       <SiteFooter />
-      <FloatingNav />
     </main>
   )
 }

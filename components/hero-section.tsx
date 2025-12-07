@@ -5,7 +5,6 @@ import { ArrowRight, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
-import { ProjectCard } from "./project-card"
 import { DotPattern } from "./dot-pattern"
 
 const testimonials = [
@@ -33,67 +32,85 @@ export function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-[#f8fafc]">
       <div className="relative mx-auto max-w-[1400px] px-4 md:px-8 pt-12 md:pt-20 pb-24">
-        {/* Dotted background pattern - only for hero area */}
-        <div className="absolute inset-x-0 top-0" style={{ height: "calc(100% - 420px)", paddingLeft: "90px", paddingRight: "90px" }}>
+
+        {/* Dots Background */}
+        <div
+          className="absolute inset-x-0 top-0"
+          style={{ height: "calc(100% - 420px)", paddingLeft: "90px", paddingRight: "90px" }}
+        >
           <div className="relative w-full h-full">
             <DotPattern width={15} height={15} cx={1} cy={1} cr={1} className="text-neutral-400/30" />
-            <div 
-              className="absolute inset-0" 
-              style={{ 
-                background: "linear-gradient(to right, rgba(248, 250, 252, 1) 0%, rgba(248, 250, 252, 0) 15%, rgba(248, 250, 252, 0) 85%, rgba(248, 250, 252, 1) 100%), linear-gradient(to top, rgba(248, 250, 252, 1) 0%, rgba(248, 250, 252, 0) 30%)",
-                pointerEvents: "none"
-              }} 
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(to right, rgba(248, 250, 252, 1) 0%, rgba(248, 250, 252, 0) 15%, rgba(248, 250, 252, 0) 85%, rgba(248, 250, 252, 1) 100%), linear-gradient(to top, rgba(248, 250, 252, 1) 0%, rgba(248, 250, 252, 0) 30%)",
+                pointerEvents: "none",
+              }}
             />
           </div>
         </div>
-        {/* Main Content Container with Side Testimonials */}
+
+        {/* ======================= SIDE FLOATING TESTIMONIAL — LEFT ======================= */}
+        <div
+          className={cn(
+            "hidden xl:block absolute -left-4 top-32 transition-all duration-700 ease-out z-10",
+            isLoaded ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8",
+          )}
+          style={{ transitionDelay: "400ms" }}
+        >
+          {/* BACK LAYER TO MATCH IMAGE */}
+          <div className="absolute top-2 left-2 w-full h-full bg-gray-200 rounded-[32px] shadow-md"></div>
+
+          {/* FRONT CARD */}
+          <div
+            className="relative bg-white rounded-[32px] shadow-xl p-7 max-w-[300px] border border-gray-200"
+            style={{ transform: "rotate(-4deg)" }}
+          >
+            <span className="absolute top-4 right-6 text-4xl text-gray-300 font-serif leading-none">”</span>
+
+            <p className="text-[15px] text-gray-700 leading-[1.6]">
+              "{testimonials[0].quote}"
+            </p>
+
+            <p className="mt-5 text-[15px] text-gray-900 font-semibold">
+              – {testimonials[0].author}, {testimonials[0].title}
+            </p>
+          </div>
+        </div>
+
+        {/* ======================= SIDE FLOATING TESTIMONIAL — RIGHT ======================= */}
+        <div
+          className={cn(
+            "hidden xl:block absolute -right-4 top-32 transition-all duration-700 ease-out z-10",
+            isLoaded ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8",
+          )}
+          style={{ transitionDelay: "500ms" }}
+        >
+          {/* BACK LAYER */}
+          <div className="absolute top-2 left-2 w-full h-full bg-gray-200 rounded-[32px] shadow-md"></div>
+
+          {/* FRONT CARD */}
+          <div
+            className="relative bg-white rounded-[32px] shadow-xl p-7 max-w-[300px] border border-gray-200"
+            style={{ transform: "rotate(4deg)" }}
+          >
+            <span className="absolute top-4 right-6 text-4xl text-gray-300 font-serif leading-none">”</span>
+
+            <p className="text-[15px] text-gray-700 leading-[1.6]">
+              "{testimonials[1].quote}"
+            </p>
+
+            <p className="mt-5 text-[15px] text-gray-900 font-semibold">
+              – {testimonials[1].author}, {testimonials[1].title}
+            </p>
+          </div>
+        </div>
+
+        {/* ======================= MAIN HERO CONTENT ======================= */}
         <div className="relative">
-          {/* Left Testimonial */}
-          <div
-            className={cn(
-              "hidden xl:block absolute -left-4 top-32 transition-all duration-700 ease-out z-10",
-              isLoaded ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8",
-            )}
-            style={{ transitionDelay: "400ms" }}
-          >
-            <div
-              className="bg-white rounded-2xl shadow-xl p-5 max-w-[240px] relative border border-border/20"
-              style={{ transform: "rotate(-6deg)" }}
-            >
-              <span className="absolute top-3 right-4 text-4xl text-muted-foreground/15 font-serif leading-none">
-                "
-              </span>
-              <p className="text-[13px] text-muted-foreground leading-relaxed pr-6">"{testimonials[0].quote}"</p>
-              <p className="mt-4 text-[13px] text-foreground font-medium">
-                - {testimonials[0].author}, {testimonials[0].title}
-              </p>
-            </div>
-          </div>
-
-          {/* Right Testimonial */}
-          <div
-            className={cn(
-              "hidden xl:block absolute -right-4 top-32 transition-all duration-700 ease-out z-10",
-              isLoaded ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8",
-            )}
-            style={{ transitionDelay: "500ms" }}
-          >
-            <div
-              className="bg-white rounded-2xl shadow-xl p-5 max-w-[240px] relative border border-border/20"
-              style={{ transform: "rotate(6deg)" }}
-            >
-              <span className="absolute top-3 right-4 text-4xl text-muted-foreground/15 font-serif leading-none">
-                "
-              </span>
-              <p className="text-[13px] text-muted-foreground leading-relaxed pr-6">"{testimonials[1].quote}"</p>
-              <p className="mt-4 text-[13px] text-foreground font-medium">
-                - {testimonials[1].author}, {testimonials[1].title}
-              </p>
-            </div>
-          </div>
-
-          {/* Main Hero Content */}
           <div className="flex flex-col items-center text-center max-w-[750px] mx-auto">
+
             {/* Availability Badge */}
             <div
               className={cn(
@@ -119,40 +136,21 @@ export function HeroSection() {
             >
               <span className="inline-flex items-center gap-4 flex-wrap justify-center">
                 World-class Tech Partner
-                {/* Vercel triangle icon */}
                 <svg className="w-7 h-7 md:w-9 md:h-9 inline-block" viewBox="0 0 76 65" fill="none">
                   <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" fill="#000000" />
-                </svg>
-                {/* Figma icon */}
-                <svg className="w-6 h-6 md:w-8 md:h-8 inline-block" viewBox="0 0 38 57" fill="none">
-                  <path
-                    d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z"
-                    fill="#1ABCFE"
-                  />
-                  <path
-                    d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z"
-                    fill="#0ACF83"
-                  />
-                  <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" fill="#FF7262" />
-                  <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" fill="#F24E1E" />
-                  <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" fill="#A259FF" />
                 </svg>
               </span>
               <br />
               <span className="inline-flex items-center gap-3 flex-wrap justify-center">
                 Engineering Your Digital
-                {/* Lightning bolt icon */}
                 <svg className="w-7 h-7 md:w-9 md:h-9 inline-block" viewBox="0 0 24 24" fill="none">
                   <path
                     d="M13 2L3 14H12L11 22L21 10H12L13 2Z"
                     fill="#F97316"
                     stroke="#F97316"
-                    strokeWidth="1"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
                   />
                 </svg>
-                <span className="text-foreground">Success</span>
+                Success
               </span>
             </h1>
 
@@ -191,91 +189,44 @@ export function HeroSection() {
             {/* Social Proof */}
             <div
               className={cn(
-                "mt-8 flex items-center gap-5 transition-all duration-700 ease-out",
+                "mt-8 flex flex-col items-center gap-3 transition-all duration-700 ease-out",
                 isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
               )}
               style={{ transitionDelay: "400ms" }}
             >
-              <div className="flex -space-x-3">
-                {avatars.map((avatar, i) => (
-                  <div
-                    key={i}
-                    className="w-11 h-11 rounded-full border-[3px] border-white overflow-hidden bg-muted shadow-sm"
-                  >
-                    <Image
-                      src={avatar || "/placeholder.svg"}
-                      alt={`Client ${i + 1}`}
-                      width={44}
-                      height={44}
-                      className="w-full h-full object-cover"
-                    />
+              <div className="flex items-center gap-5">
+                <div className="flex -space-x-3">
+                  {avatars.map((avatar, i) => (
+                    <div
+                      key={i}
+                      className="w-11 h-11 rounded-full border-[3px] border-white overflow-hidden bg-muted shadow-sm"
+                    >
+                      <Image
+                        src={avatar}
+                        alt={`Client ${i + 1}`}
+                        width={44}
+                        height={44}
+                        className="object-cover w-full h-full"
+                      />
+                    </div>
+                  ))}
+                  <div className="w-11 h-11 rounded-full border-[3px] border-white bg-muted flex items-center justify-center text-xs font-bold text-muted-foreground shadow-sm">
+                    +30
                   </div>
-                ))}
-                <div className="w-11 h-11 rounded-full border-[3px] border-white bg-muted flex items-center justify-center text-xs font-bold text-muted-foreground shadow-sm">
-                  +30
+                </div>
+
+                <div className="flex items-center gap-1">
+                  {[...Array(5)].length > 0 &&
+                    [...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-foreground text-foreground" />
+                    ))}
                 </div>
               </div>
-              <div className="flex items-center gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-foreground text-foreground" />
-                ))}
-              </div>
-              <span className="text-sm text-muted-foreground">From 30+ reviews</span>
+              <span className="text-sm text-muted-foreground ml-[50px] self-start">
+                From 30+ reviews
+              </span>
             </div>
           </div>
-        </div>
-
-        <div
-          className={cn(
-            "mt-20 grid grid-cols-1 md:grid-cols-3 gap-6 transition-all duration-700 ease-out",
-            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12",
-          )}
-          style={{ transitionDelay: "500ms" }}
-        >
-          <ProjectCard
-            image="/ai-learning-app-purple-illustration-with-cartoon-c.jpg"
-            label="AI learning App"
-            labelColor="bg-orange-500"
-            overlayTitle="English made fun and personal with AI"
-            overlaySubtitle="AI-powered books and a talking chatbot"
-            ctaText="Start Learning Now"
-            ctaColor="bg-orange-500 hover:bg-orange-600"
-            description="CodeDale turned our vision into reality. Intelligent, personalized feedback changed content learning forever."
-            response="Honored to drive lasting impact."
-            author="Sujith Reddy Gopu"
-            authorTitle="Founder of Fluent Pro"
-            authorImage="/professional-man-headshot.png"
-          />
-          <ProjectCard
-            image="/mobile-app-dark-theme-screens-mockup-business-dash.jpg"
-            overlayTitle="Smart ERP to Global"
-            description="CodeDale met our most ambitious requirements. Their team became a trusted extension, not just a vendor."
-            response="Proud to be your trusted partner."
-            author="Abhishek"
-            authorTitle="Senior Business Analyst at Conquer"
-            authorImage="/professional-indian-man-headshot.jpg"
-          />
-          <ProjectCard
-            image="/saas-king-hackathon-landing-page-purple-gradient-n.jpg"
-            label="47:32"
-            labelColor="bg-teal-500"
-            topRightBadge={true}
-            overlayTitle="SaaS King Hackathon"
-            overlaySubtitle="Hire Global Talent"
-            description="From vision to live product in seven days— unbelievable! CodeDale delivered speed and perfection."
-            response="Thrilled to make the impossible possible."
-            author="Karim A. Oumran"
-            authorTitle="Founder of SaaS King"
-            authorImage="/professional-middle-eastern-man.png"
-          />
-        </div>
-
-        <div className="flex items-center justify-center gap-2 mt-10 pb-8">
-          <div className="w-2.5 h-2.5 rounded-full bg-foreground"></div>
-          <div className="w-2.5 h-2.5 rounded-full bg-muted-foreground/20"></div>
-          <div className="w-2.5 h-2.5 rounded-full bg-muted-foreground/20"></div>
-          <div className="w-2.5 h-2.5 rounded-full bg-muted-foreground/20"></div>
-          <div className="w-2.5 h-2.5 rounded-full bg-muted-foreground/20"></div>
         </div>
       </div>
     </section>

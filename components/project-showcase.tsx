@@ -1,44 +1,23 @@
-import Image from "next/image"
+"use client";
+
+import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 interface ProjectCard {
-  id: number
-  image: string
-  testimonial: string
-  clientName: string
-  response: string
-  avatar: string
-  fullName: string
-  title: string
-  companyHighlight?: string
+  id: number;
+  image: string;
+  testimonial: string;
+  clientName: string;
+  response: string;
+  avatar: string;
+  fullName: string;
+  title: string;
+  companyHighlight?: string;
 }
 
 const projects: ProjectCard[] = [
   {
     id: 1,
-    image: "/english-ai-learning-app-with-purple-background-car.jpg",
-    testimonial:
-      "CodeDale turned our vision into reality. Instant, personalized feedback changed student learning forever.",
-    clientName: "Sujith Reddy Gopu",
-    response: "Honored to drive lasting impact.",
-    avatar: "/professional-indian-man-headshot.jpg",
-    fullName: "Sujith Reddy Gopu",
-    title: "Founder of",
-    companyHighlight: "Fluent Pro",
-  },
-  {
-    id: 2,
-    image: "/project-management-dashboard-multiple-ui-screens-m.jpg",
-    testimonial:
-      "CodeDale met our most ambitious requirements. Their team became a trusted extension, not just a vendor.",
-    clientName: "Abhishek",
-    response: "Proud to be your trusted partner.",
-    avatar: "/professional-indian-man-headshot-smiling.jpg",
-    fullName: "Abhishek",
-    title: "Senior Business Analyst at",
-    companyHighlight: "Conquer",
-  },
-  {
-    id: 3,
     image: "/3d-dark-textured-carbon-fiber-background-with-text.jpg",
     testimonial:
       "We imagined the extraordinary—a 3D immersive experience. CodeDale brought it to life with precision and creativity.",
@@ -50,9 +29,10 @@ const projects: ProjectCard[] = [
     companyHighlight: "ATH",
   },
   {
-    id: 4,
+    id: 2,
     image: "/tfs-finserv-mobile-app-mockup-pink-coral-backgroun.jpg",
-    testimonial: "We thought it was impossible. CodeDale made it possible and changed how we see tech partners.",
+    testimonial:
+      "We thought it was impossible. CodeDale made it possible and changed how we see tech partners.",
     clientName: "Narasimha Reddy",
     response: "Grateful to set new standards together.",
     avatar: "/professional-indian-businessman-headshot.jpg",
@@ -60,65 +40,145 @@ const projects: ProjectCard[] = [
     title: "Founder & CEO of",
     companyHighlight: "TFS",
   },
-]
+  {
+    id: 3,
+    image: "/english-ai-learning-app-with-purple-background-car.jpg",
+    testimonial:
+      "CodeDale turned our vision into reality. Instant, personalized feedback changed student learning forever.",
+    clientName: "Sujith Reddy Gopu",
+    response: "Honored to drive lasting impact.",
+    avatar: "/professional-indian-man-headshot.jpg",
+    fullName: "Sujith Reddy Gopu",
+    title: "Founder of",
+    companyHighlight: "Fluent Pro",
+  },
+  {
+    id: 4,
+    image: "/project-management-dashboard-multiple-ui-screens-m.jpg",
+    testimonial:
+      "CodeDale met our most ambitious requirements. Their team became a trusted extension, not just a vendor.",
+    clientName: "Abhishek",
+    response: "Proud to be your trusted partner.",
+    avatar: "/professional-indian-man-headshot-smiling.jpg",
+    fullName: "Abhishek",
+    title: "Senior Business Analyst at",
+    companyHighlight: "Conquer",
+  },
+];
 
 export function ProjectShowcase() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  // AUTO-SCROLL TO NEXT CARD EVERY 5 SECONDS
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const interval = setInterval(() => {
+      const cardWidth = 486; // card width (480px) + gap (6px)
+      const maxScroll = el.scrollWidth - el.clientWidth;
+      
+      if (el.scrollLeft >= maxScroll - 10) {
+        // Loop back to start
+        el.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        // Scroll to next card
+        el.scrollBy({ left: cardWidth, behavior: "smooth" });
+      }
+    }, 5000); // 5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className="py-16 px-4 md:px-8 lg:px-16 bg-white">
-      <div className="max-w-[1400px] mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {projects.map((project) => (
+    <section className="py-20 bg-transparent -mt-[40px]">
+      <div className="max-w-[1600px] mx-auto px-6">
+
+        {/* Horizontal Auto Scrolling Container */}
+        <div
+          ref={scrollRef}
+          className="flex gap-6 overflow-x-auto scrollbar-hide"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
+          {[...projects, ...projects, ...projects].map((p, index) => (
             <div
-              key={project.id}
-              className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-border/30"
+              key={`${p.id}-${index}`}
+              className="flex-shrink-0 w-[480px] bg-[#f8fafc] border-2 border-white rounded-[32px] overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.08)] snap-start"
             >
-              {/* Project Image */}
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <Image
-                  src={project.image || "/placeholder.svg"}
-                  alt={`Project by ${project.clientName}`}
-                  fill
-                  className="object-cover"
-                />
+              {/* ---------------- TOP IMAGE WITH ROUNDED SHAPE ---------------- */}
+              <div className="relative h-[280px] w-full p-4">
+                <div className="relative w-full h-full rounded-[24px] overflow-hidden">
+                  <Image
+                    src={p.image}
+                    alt=""
+                    fill
+                    className="object-cover"
+                  />
+                  
+                  {/* Small corner badge */}
+                  <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-md border border-white/30 px-3 py-1.5 rounded-full text-white text-xs font-semibold">
+                    {p.companyHighlight}
+                  </div>
+                </div>
               </div>
 
-              {/* Testimonial Content */}
-              <div className="p-5">
-                {/* Client Quote */}
-                <p className="text-[15px] leading-relaxed text-foreground mb-2">{project.testimonial}</p>
+              {/* ---------------- CHAT-LIKE CONTENT ---------------- */}
+              <div className="px-6 pb-6">
 
-                {/* Client Name (small) */}
-                <p className="text-sm text-muted-foreground mb-4">{project.clientName}</p>
-
-                {/* Response Banner */}
-                <div className="bg-[#f5f5f5] rounded-lg px-4 py-3 flex items-center justify-between mb-4">
-                  <p className="text-sm font-medium text-foreground">{project.response}</p>
-                  <span className="text-xs text-muted-foreground">CodeDale</span>
+                {/* Client testimonial - chat bubble style */}
+                <div className="bg-gray-100 rounded-[20px] rounded-tl-[4px] px-5 py-4 text-[16px] leading-[1.55] text-gray-900 mb-6">
+                  {p.testimonial}
+                  {/* Client name inside bubble */}
+                  <p className="text-[13px] text-gray-500 mt-3 mb-0">
+                    {p.clientName}
+                  </p>
                 </div>
 
-                {/* Client Info Footer */}
-                <div className="flex items-center gap-3">
-                  <div className="relative w-10 h-10 rounded-full overflow-hidden">
-                    <Image
-                      src={project.avatar || "/placeholder.svg"}
-                      alt={project.fullName}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-foreground">{project.fullName}</p>
-                    <p className="text-xs text-muted-foreground">
-                      {project.title}{" "}
-                      {project.companyHighlight && <span className="text-[#0066FF]">{project.companyHighlight}</span>}
+                {/* Response bubble - right aligned */}
+                <div className="flex justify-end mb-6">
+                  <div className="bg-gray-800 text-white rounded-[20px] rounded-tr-[4px] px-5 py-4 text-[15px] max-w-[85%]">
+                    {p.response}
+                    {/* CodeDale label inside response bubble */}
+                    <p className="text-[13px] text-gray-400 text-right mt-3 mb-0">
+                      CodeDale
                     </p>
                   </div>
                 </div>
+
+                {/* Footer with avatar */}
+                <div className="flex items-center gap-3 pt-4 border-t border-gray-200/50">
+                  <div className="w-[44px] h-[44px] rounded-full overflow-hidden border-2 border-gray-100">
+                    <Image
+                      src={p.avatar}
+                      alt={p.fullName}
+                      width={44}
+                      height={44}
+                      className="object-cover"
+                    />
+                  </div>
+
+                  <div>
+                    <p className="text-[15px] font-semibold text-gray-900">
+                      {p.fullName}
+                    </p>
+                    <p className="text-[13px] text-gray-600">
+                      {p.title} <span className="text-blue-600 font-medium">{p.companyHighlight}</span>
+                    </p>
+                  </div>
+                </div>
+
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      {/* HIDE SCROLLBAR */}
+      <style jsx global>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </section>
-  )
+  );
 }
