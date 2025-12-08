@@ -133,21 +133,11 @@ pnpm build
 pnpm start
 ```
 
-## 📝 Environment Variables
-
-If you need to add environment variables, create a `.env.local` file in the root directory:
-
-```env
-NEXT_PUBLIC_API_URL=your_api_url
-```
 
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
 
 ## 👥 Author
 
