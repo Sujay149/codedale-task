@@ -195,7 +195,7 @@ The application features:
 │           Utility Functions                      │
 │  - Class merging (cn)                            │
 │  - Type utilities                                │
-│  - Constants                                     │
+│  - Constants                                      │
 └──────────────────────────────────────────────────┘
 ```
 
