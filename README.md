@@ -199,7 +199,7 @@ The application features:
 └──────────────────────────────────────────────────┘
 ```
 
-### Data Flow
+### Data Flow:
 
 ```
 User Interaction
